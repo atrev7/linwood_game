@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Archive 214A Access</title>
+  <link rel="stylesheet" href="archive.css">
+</head>
+<body>
+  <div class="access-container">
+    <h1><span class="glitch-text">ARCHIVE 214A</span></h1>
+    <p class="subtitle">Vault B-Series Logs</p>
+    <div class="access-box">
+      <label for="accessInput">Enter Access Credentials</label>
+      <input type="text" id="accessInput" placeholder="Badge ID" />
+      <button onclick="checkAccess()">Submit</button>
+      <p id="error" class="error"></p>
+    </div>
+
+    <div id="unlockedContent" class="hidden">
+      <h2>Access Granted</h2>
+      <p>The following documents have been made available:</p>
+      <ul>
+        <li><a href="Suppresion.txt" target="_blank">Email_Thread_Subject_Suppression_Reynolds_Linwood.pdf</a></li>
+        <li><a href="Removal.txt" target="_blank">Reynolds Removal Request.txt</a></li>
+        <li><a href="REYNOLDS_PERSONAL_NOTES.html">REYNOLDS_PERSONAL_NOTES.zip</a></li> 
+SYSTEM LOG – ARCHIVE NODE 214A  
+Requestor: REYNOLDS, A. (sr-research)  
+Request Type: Personal Archive Deletion  
+File ID: REYNOLDS_PERSONAL_NOTES.zip  
+Timestamp: 04/07/2024 18:32 UTC
+
+Automated Response:  
+→ Deletion attempt initiated  
+→ Transfer route: Vault-A01 → External Storage (Blocked)  
+→ Checksum verification: FAILED  
+→ Retention protocol 4.2 activated
+
+Note: No override authorization registered.  
+File retained in Archive 214A buffer pending review.
+
+        <li><a href="F_Them.pdf" target="_blank">Internal Memo to All</a></li>
+        <li><a href="COMMS_LOGS_FLAGGED.html" target="_blank">--FLAGGED--</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="archive.js"></script>
+<div style="text-align: center; margin-top: 3em;">
+  <a href="archives.html" style="color: #84c8ff; font-size: 0.95em; text-decoration: underline;">
+    ← Return to Research Index
+  </a>
+</div>
+
+</body>
+</html>

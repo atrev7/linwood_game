@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Linwood Institute | Badge Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="terminal">
+        <h1>RMI ACCESS TERMINAL</h1>
+        <p class="subheader">Badge Authentication Required</p>
+        <input type="text" id="badgeInput" placeholder="Enter Badge ID" />
+        <button onclick="checkBadge()">Submit</button>
+        <p id="errorMessage" class="error"></p>
+
+        <div id="marcoFiles" class="file-section hidden">
+            <h2>Accessed: Marco Reynolds Vault </h2>
+            <ul>
+                <li><a href="Access_Log_2B.txt" target="_blank">Access_Log_2B.txt</a></li>
+                <li><a href="Room2B_Map.png" target="_blank">Room2B_Map.png</a></li>
+                <li><a href="Staff_Note_Unknown.png" target="_blank">Staff_Note_Unknown.pdf</a></li>
+                <li><a href="breach_protocol_prompt.html">...</a></li>
+            </ul>
+        </div>
+
+        <div id="leoFiles" class="file-section hidden">
+            <h2>Accessed: Leo Linwood</h2>
+            <ul>
+                <li><a href="MB_Email.txt" target="_blank">MB.txt</a></li>
+                <li><a href="Albuquerque_Times.pdf" target="_blank">News Article</a></li>
+                <li><a href="Browns_Wife.txt" target="_blank">Apology.txt</a></li>
+                <li><a href="Thoughts.txt" target="_blank">Thought_Log.txt</a></li>
+                <li><a href="Linwood_Amanda_Note.txt" target="_blank">Amanda_Reynolds_Notes.txt</a></li>
+                <li><a href="Delacroix_Article.pdf" target="_blank">Durant Honors 2019</a></li>
+                <li><a href="Dismissal.pdf" target="_blank">Delacroix_Dismissal.pdf</a></li>
+            </ul>
+        </div>
+
+        <div id="amandaFiles" class="file-section hidden">
+            <h2>Accessed: Amanda Reynolds</h2>
+            <ul>
+                <li><a href="Reynolds_Unsent_Email.txt" target="_blank">Email Draft.txt</a></li>
+                <li><a href="Passive_Vaulting.pdf" target="_blank">Passive Vaulting Concept</a></li>
+                <li><a href="A_Series_Memo.pdf" target="_blank">A-Series_Memo.pdf</a></li>
+                <li><a href="Kathy_Amanda.png" target="_blank">Mentor.png</a></li>
+                <li><a href="Memory_Is_Not_a_Mirror.pdf" target="_blank">Memory_Is_Not_a_Mirror.pdf</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <footer>Property of Linwood Institute · RMI Division</footer>
+    <script src="login.js"></script>
+<div style="text-align: center; margin-top: 40px;">
+  <a href="index.html" style="color: #90caf9; text-decoration: underline; font-size: 0.95em;">
+    Return to Main Directory
+  </a>
+</div>
+
+</body>
+</html>

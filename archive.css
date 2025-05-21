@@ -1,0 +1,95 @@
+
+body {
+  background-color: #0e1218;
+  font-family: monospace;
+  color: #d3e4f0;
+  padding: 4em;
+}
+.access-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #161b22;
+  padding: 3em;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+h1 {
+  color: #7ecfff;
+  font-size: 2.2em;
+  letter-spacing: 0.05em;
+}
+.subtitle {
+  color: #9eb3c9;
+  margin-bottom: 2em;
+  font-size: 1em;
+}
+.access-box input {
+  padding: 0.7em;
+  width: 80%;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  font-size: 1em;
+  background-color: #0e1218;
+  border: 1px solid #7ecfff;
+  color: #d3e4f0;
+  border-radius: 4px;
+}
+.access-box button {
+  padding: 0.7em 1.5em;
+  background-color: #7ecfff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.access-box button:hover {
+  background-color: #60bce9;
+}
+.error {
+  color: #ff6b6b;
+}
+.hidden {
+  display: none;
+}
+#unlockedContent ul {
+  list-style: none;
+  padding-left: 0;
+}
+#unlockedContent li {
+  margin-bottom: 0.8em;
+}
+#unlockedContent a {
+  color: #84c8ff;
+  text-decoration: none;
+}
+#unlockedContent a:hover {
+  text-decoration: underline;
+}
+.glitch-text {
+  position: relative;
+  color: #7ecfff;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 red, -2px 0 cyan;
+  }
+  20% {
+    text-shadow: -2px 0 red, 2px 0 cyan;
+  }
+  40% {
+    text-shadow: 2px 2px red, -2px -2px cyan;
+  }
+  60% {
+    text-shadow: none;
+  }
+  80% {
+    text-shadow: 2px -2px red, -2px 2px cyan;
+  }
+  100% {
+    text-shadow: 0 0 0;
+  }
+}

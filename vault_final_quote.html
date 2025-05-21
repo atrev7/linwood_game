@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Final Quote</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-family: monospace;
+      font-size: 1.2em;
+      padding: 60px;
+      text-align: center;
+    }
+    #final {
+      white-space: pre-wrap;
+    }
+    .small {
+      color: #555;
+      font-size: 1.1em;
+      margin-top: 3em;
+    }
+  </style>
+</head>
+<body>
+  <div id="final"></div>
+  <script>
+    const lines = ['The mind forgets to protect itself.', 'But the truth doesn’t disappear.', 'It waits.', '', 'Thank you for participating in the Linwood Institute’s internal recovery audit.', 'Trial concluded.', '', 'Recovered Subject Set: Cohort 3'];
+    const final = document.getElementById("final");
+    let i = 0;
+
+    function typeFinal() {
+      if (i < lines.length) {
+        const span = document.createElement("div");
+        span.textContent = lines[i];
+        final.appendChild(span);
+        i++;
+        setTimeout(typeFinal, 2500);
+      }
+    }
+
+    window.onload = typeFinal;
+  </script>
+</body>
+</html>

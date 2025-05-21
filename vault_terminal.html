@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vault Shutdown Sequence Terminal</title>
+  <style>
+    body {
+      background-color: #0a0f14;
+      color: #7ecfff;
+      font-family: monospace;
+      padding: 60px;
+      text-align: center;
+    }
+    input[type="text"] {
+      padding: 12px;
+      font-size: 1em;
+      width: 280px;
+      background-color: #0a0f14;
+      border: 1px solid #7ecfff;
+      color: #7ecfff;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1em;
+      font-weight: bold;
+      background-color: #7ecfff;
+      color: #000;
+      border: none;
+      cursor: pointer;
+    }
+    .error {
+      color: #ff5f5f;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vault Shutdown Sequence Terminal</h1>
+  <p>Enter Subject Access Credential to continue:</p>
+  <input type="text" id="vaultInput" placeholder="Enter access key" />
+  <br>
+  <button onclick="checkVault()">Submit</button>
+  <p id="errorMsg" class="error"></p>
+
+  <script>
+    function checkVault() {
+      const input = document.getElementById("vaultInput").value.trim().toLowerCase();
+      if (input === "cioni") {
+        window.location.href = "vault_shutdown_sequence.html";
+      } else {
+        document.getElementById("errorMsg").innerText = "ACCESS DENIED – Invalid subject key.";
+      }
+    }
+  </script>
+</body>
+</html>

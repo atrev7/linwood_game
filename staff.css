@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafd;
+    color: #222;
+}
+header.navbar {
+    background-color: #1f3a68;
+    color: white;
+    padding: 1.2em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.4em;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+nav a {
+    color: white;
+    margin-left: 1.5em;
+    text-decoration: none;
+    font-size: 0.95em;
+}
+nav a.active, nav a:hover {
+    text-decoration: underline;
+}
+.page-title {
+    text-align: center;
+    padding: 2em 0 1em;
+}
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2em;
+    padding: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.staff-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+.staff-card img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    display: block;
+    margin: 2em auto 1.5em auto; /* top, right, bottom, left */
+    border-radius: 8px;
+}
+.staff-info {
+    padding: 1em;
+}
+.staff-info h3 {
+    margin: 0 0 0.5em;
+    font-size: 1.2em;
+}
+.staff-info p {
+    margin: 0.2em 0;
+}
+.bio {
+    display: none;
+    padding: 1em;
+    border-top: 1px solid #eee;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+.toggle-btn {
+    display: block;
+    text-align: right;
+    padding: 0.5em 1em;
+    background-color: #f0f4f8;
+    font-size: 0.85em;
+    cursor: pointer;
+    color: #1f3a68;
+}
+@media screen and (max-width: 600px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .staff-card {
+    margin-bottom: 2em;
+  }
+}
+

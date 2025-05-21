@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vault Shutdown</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-family: monospace;
+      font-size: 1.5em;
+      text-align: center;
+      padding-top: 15%;
+    }
+    #loading, #shutdown {
+      margin-bottom: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">LOADING... [▓▓▓░░░░░░░░] 34%</div>
+  <div id="loading2" style="display:none;">LOADING... [▓▓▓▓▓▓▓▓░░░░] 76%</div>
+  <div id="loading3" style="display:none;">LOADING... [▓▓▓▓▓▓▓▓▓▓▓▓] 98%</div>
+  <div id="shutdown" style="display:none; font-size: 2em; color: #ff4444;">>> SHUTDOWN INITIATED <<</div>
+
+  <script>
+    setTimeout(() => {{
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("loading2").style.display = "block";
+    }}, 1800);
+
+    setTimeout(() => {{
+      document.getElementById("loading2").style.display = "none";
+      document.getElementById("loading3").style.display = "block";
+    }}, 3600);
+
+    setTimeout(() => {{
+      document.getElementById("loading3").style.display = "none";
+      document.getElementById("shutdown").style.display = "block";
+    }}, 5400);
+
+    setTimeout(() => {{
+      document.body.style.transition = "background-color 1.5s ease";
+      document.body.style.backgroundColor = "#000";
+      document.getElementById("shutdown").style.display = "none";
+    }}, 7200);
+
+    setTimeout(() => {{
+      window.location.href = "vault_final_monologue.html";
+    }}, 8800);
+  </script>
+</body>
+</html>

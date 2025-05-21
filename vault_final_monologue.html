@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<audio id="alert-sound" src="amber.mp3" preload="auto"></audio>
+
+  <meta charset="UTF-8">
+  <title>Vault Final Message</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-family: monospace;
+      font-size: 1.1em;
+      padding: 60px;
+      max-width: 900px;
+      margin: auto;
+      white-space: pre-wrap;
+      transition: background-color 2s ease;
+    }
+    #output {
+      margin-bottom: 40px;
+    }
+    .final-line {
+      display: none;
+      font-size: 1.6em;
+      font-weight: bold;
+      color: #00ffee;
+      text-align: center;
+      margin: 30px 0;
+    }
+    #pressBtn {
+      display: none;
+      text-align: center;
+      margin-top: 40px;
+      padding-bottom: 60px;
+      width: 100%;
+    }
+    #pressBtn a button {
+      padding: 12px 24px;
+      font-size: 1em;
+      font-weight: bold;
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="output"></div>
+
+  <div id="line1" class="final-line">Vault integrity confirmed.</div>
+  <div id="line2" class="final-line">Subject identities reinitialized.</div>
+  <div id="line3" class="final-line">Welcome back, Cohort 3.</div>
+
+  <div id="pressBtn">
+    <a href="cohort_press_release.html">
+      <button>View Recovered Press Release</button>
+    </a>
+  </div>
+
+  <script>
+    const lines = [
+      "You weren’t supposed to remember this.",
+      "But if you’re seeing this… I failed.",
+      "Or maybe—I finally did the right thing.",
+      "",
+      "You were part of something… beautiful. It was never meant to hurt you.",
+      "When the trials began, we believed RMI could protect people—give them control over their memories, their traumas.",
+      "",
+      "But we went too far. The vaults didn’t isolate pain. They buried identity.",
+      "We were editing people. And when you started to break… I knew I had to stop it.",
+      "",
+      "That’s why I did it. Why I made you forget. Why I locked away everything we were.",
+      "",
+      "I wasn’t erasing your past. I was trying to give you a future.",
+      "",
+      "But now you’ve brought it all back. You did what they couldn’t. You woke yourselves up.",
+      "",
+      "And that means one thing.",
+      "You’re ready to decide what happens next."
+    ];
+    const output = document.getElementById("output");
+    let index = 0;
+
+    function typeLine() {
+      if (index < lines.length) {
+        const lineElem = document.createElement("div");
+        lineElem.textContent = lines[index];
+        output.appendChild(lineElem);
+        index++;
+        setTimeout(typeLine, 3500);
+      } else {
+        setTimeout(showFinalLines, 2500);
+      }
+    }
+
+    function showFinalLines() {
+      const finalLines = ["line1", "line2", "line3"];
+      let i = 0;
+      function reveal() {
+        if (i < finalLines.length) {
+          document.getElementById(finalLines[i]).style.display = "block";
+          i++;
+          setTimeout(reveal, 3000);
+        } else {
+          document.getElementById("pressBtn").style.display = "block";
+        }
+      }
+      reveal();
+    }
+
+    window.onload = function () {
+      setTimeout(typeLine, 1500);
+    };
+  </script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const alertSound = document.getElementById("alert-sound");
+
+    // Try to play the sound after a tiny delay (helps some browsers)
+    setTimeout(() => {
+      alertSound.volume = 1.0;
+      const playAttempt = alertSound.play();
+      if (playAttempt !== undefined) {
+        playAttempt.catch(err => {
+          console.warn("Playback blocked: user interaction required");
+        });
+      }
+    }, 100);
+  });
+</script>
+
+
+</body>
+</html>

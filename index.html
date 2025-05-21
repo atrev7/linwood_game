@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linwood Institute</title>
+  <link rel="stylesheet" href="cssbro.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="47CC0C6C-D6EB-45C1-BE9D-DF6DC93135BC.jpeg" alt="Linwood Logo" style="height: 140px; vertical-align: middle;" />
+    </div>
+    <nav>
+      <a href="index.html" class="active">HOME</a>
+      <a href="archives.html">RESEARCH INDEX</a>
+      <a href="staff.html">STAFF</a>
+      <a href="about.html">ABOUT</a>
+      <a href="login.html">STAFF LOGIN</a>
+    </nav>
+  </header>
+
+  <main class="home">
+    <section class="hero-banner" style="background-color:#1f3a68; color:white; padding:5em 2em; text-align:center;">
+  <h1 class="hero-title" style="font-size:2.6em; text-transform:uppercase; font-weight:bold; margin-bottom:0.5em; letter-spacing:0.03em;">
+    ADVANCING THE SCIENCE OF THE MIND
+  </h1>
+  <p class="hero-subtext" style="font-size:1.1em; line-height:1.6; max-width:700px; margin:0 auto; color:#dfe8f5;">
+    At the forefront of cognitive research, the Linwood Institute is dedicated to pioneering studies
+    that unlock the mysteries of the human brain and improve mental health worldwide.
+  </p>
+</section>
+
+
+    <section class="news-section">
+      <h2>Recent News</h2>
+      <div class="news-carousel">
+        <div class="news-slide active">
+          <img src="images/B0194B2F-B052-47B6-8C1D-258A5F91E69A.png" alt="Leo speaking">
+          <h3>Leo Linwood to Speak at National Cognitive Systems Conference</h3>
+          <p>Dr. Linwood will headline the 2024 Cognitive Engineering Summit in Zurich, discussing vault isolation frameworks.</p>
+        </div>
+        <div class="news-slide">
+          <img src="images/C949C311-B7D8-461A-9F87-C4903273A431.png" alt="Kathy Shin award">
+          <h3>Dr. Kathy Shin Nominated for Global Child Systems Award</h3>
+          <p>Recognized for her ARC-17 research, Dr. Shin has been nominated for the prestigious Marlowe Prize in Developmental Psychology.</p>
+        </div>
+        <div class="news-slide">
+          <img src="images/EF149564-C877-4F3E-9C7C-73723697F082.png" alt="Tamarin Chili Cookoff">
+          <h3>Tamarin Looks to Maintain His Chili Dynasty at Linwood Cookoff</h3>
+          <p>The annual Linwood Chili Cookoff is scheduled for April 20, and Tamarin’s 8-year undefeated streak is on the line.</p>
+        </div>
+        <div class="news-slide">
+          <img src="images/85BF3036-370E-4211-9EDD-DE4D919C2368.png" alt="Marco the dog">
+          <h3>Marco Appointed Lead Researcher on Squirrels</h3>
+          <p>Following a rigorous lunchtime observation study, Marco has been promoted by unanimous tail-wag. See more on Instagram @LinwoodInstitute. </p>
+
+        </div>
+        <div class="news-slide" id="amanda-slide">
+  <img id="amanda-img" src="47CC0C6C-D6EB-45C1-BE9D-DF6DC93135BC.jpeg" alt="Linwood outreach">
+  <h3 id="amanda-title">Linwood Launches Volunteer Mental Health Workshop Series</h3>
+  <p id="amanda-text">Staff will lead sessions on memory resilience, recall stress, and neuro-pattern recognition in local schools.</p>
+</div>
+
+      </div>
+      <div class="news-nav">
+        <button id="prevNews">Previous</button>
+        <button id="nextNews">Next</button>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="news.js"></script>
+
+<div id="shutdownBtn" style="display: none; text-align: center; margin-top: 60px;">
+  <a href="vault_terminal.html">
+    <button style="
+      font-size: 1.4em;
+      padding: 20px 40px;
+      background-color: #ff4444;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+    ">
+      FINAL VAULT SHUTDOWN SEQUENCE
+    </button>
+  </a>
+</div>
+<script>
+  if (localStorage.getItem("linwood_shutdown_unlocked") === "true") {
+    document.getElementById("shutdownBtn").style.display = "block";
+  }
+</script>
+
+<div id="devReset" style="margin-top: 60px; text-align: center;">
+  <a href="#" onclick="localStorage.removeItem('linwood_shutdown_unlocked'); localStorage.removeItem('amandaUnlocked'); location.reload();" style="color: #aaa; font-size: 0.9em;">
+    [MANUAL SYSTEM RESET]
+  </a>
+</div>
+
+
+<script>
+  if (localStorage.getItem("amandaUnlocked") === "true") {
+    document.getElementById("amanda-img").src = "glitch.png.png";
+    document.getElementById("amanda-img").alt = "System Node Detected";
+
+    document.getElementById("amanda-title").textContent = ">>> SYS NODE DETECTED: AR99152";
+    document.getElementById("amanda-title").style.color = "#ff4444";
+    document.getElementById("amanda-title").style.fontFamily = "Courier New, monospace";
+    document.getElementById("amanda-title").style.textShadow = "0 0 2px #ff4444";
+
+    document.getElementById("amanda-text").textContent = "Playback fragment recovered. Click here to open.";
+    document.getElementById("amanda-text").style.color = "#ff9999";
+    document.getElementById("amanda-text").style.fontFamily = "Courier New, monospace";
+
+    document.getElementById("amanda-slide").style.cursor = "pointer";
+    document.getElementById("amanda-slide").addEventListener("click", function () {
+      window.open('REYNOLDS_NODE_99152.html', '_blank');
+    });
+  }
+</script>
+
+</body>
+</html>
