@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COMMS_LOGS_FLAGGED.txt</title>
+    <style>
+        body {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: "Courier New", monospace;
+            padding: 2em;
+            white-space: pre-wrap;
+            line-height: 1.6em;
+            font-size: 1.05em;
+        }
+        .highlight {
+            color: #ff5555;
+            text-shadow: 0 0 2px #ff5555;
+        }
+    </style>
+    <script>
+        // Set Amanda unlock flag when this file is opened
+        localStorage.setItem("amandaUnlocked", "true");
+    </script>
+</head>
+<body>
+
+> FLAGGED COMMUNICATION LOGS – INTERNAL REVIEW ONLY  
+> Source: SYS_ROUTER: LINWOOD_INST-CORE / RMI Division  
+> Date: 2024-04-10  
+> Analyst Notes:  
+Unusual routing activity from node AR99152. Line was flagged for deletion but appears to have cached a partial backup.  
+Node integrity degraded. Playback transcript reconstruction attempted.  
+
+--  
+> Comms Fragment Detected – NODE: <span class="highlight">AR99152</span>  
+> Status: Unregistered / Orphaned  
+> Recovery status: <span class="highlight">FRAGMENTED</span>  
+--  
+
+> AUTHENTICATION PHRASE TRIGGER REQUIRED  
+> See internal echo logs for associated node pairs.  
+
+// End of log
+
+</body>
+</html>

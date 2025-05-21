@@ -1,0 +1,8 @@
+Subject B-06 is the only approved recipient for manual key deployment.
+
+If the vault loop breaks and memory fragments begin to resurface, recovery must be initiated directly from that subject’s command node.
+
+Linwood will attempt suppression. Delay is fatal.
+
+Key delivery must be triggered from the source.
+– A.R.
