@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maze Simulation - Node 214A</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: #33ff33;
+      font-family: monospace;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+      background: #000;
+      border: 2px solid #33ff33;
+    }
+    #overlay {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      color: #33ff33;
+      font-size: 1.5em;
+      display: none;
+      animation: flicker 1s infinite alternate;
+    }
+    #creepText {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      color: #33ff33;
+      font-size: 1em;
+      display: none;
+      animation: scrollText 10s linear infinite;
+    }
+    @keyframes flicker {
+      from { opacity: 1; }
+      to { opacity: 0.3; }
+    }
+    @keyframes scrollText {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
+    }
+  </style>
+</head>
+<body>
+<canvas id="mazeCanvas" width="480" height="480"></canvas>
+<div id="overlay">SUBJECT PATH DETECTED...<br>RELOADING SIMULATION</div>
+<div id="creepText"></div>
+<script>
+  const canvas = document.getElementById('mazeCanvas');
+  const ctx = canvas.getContext('2d');
+
+  const tileSize = 30;
+  let levelIndex = 0;
+  const levels = [
+  [
+    "################",
+    "#...........#..#",
+    "#....#..#......#",
+    "#..#####..#..#.#",
+    "##......#.....##",
+    "#.......###...##",
+    "#.#.##..##.##>##",
+    "#.#.#....##.####",
+    "################",
+  ],
+  [
+    "################",
+    "#..#...##.##..##",
+    "#........##....#",
+    "##.............#",
+    "#..#.......#..##",
+    "#...#.#........#",
+    "#.#.#...#..#...#",
+    "##.......#.#.#>#",
+    "################",
+  ],
+  [
+    "################",
+    "#....#.........#",
+    "#.#.#...#..#..##",
+    "##..##.#....#.##",
+    "##.#...#.......#",
+    "#...#......#...#",
+    "##......#...#.##",
+    "###...#..#....>#",
+    "################",
+  ],
+  [
+    "################",
+    "#.#.#.#.....#..#",
+    "#....#.##.#....#",
+    "#........#.....#",
+    "#...#.#...#....#",
+    "#..............#",
+    "#.....###..#..##",
+    "#>....#.#....#.#",
+    "################",
+  ],
+  [
+    "################",
+    "#.......##....##",
+    "#..........#.#.#",
+    "#.##.......#...#",
+    "#.#.......##.###",
+    "###.....##....##",
+    "#.#....#.#..#..#",
+    "#...#..#..#..#>#",
+    "################",
+  ],
+  [
+    "################",
+    "#........#..#.##",
+    "#...##.#......##",
+    "###....#.#....##",
+    "#........#...###",
+    "#.........###.##",
+    "#.#............#",
+    "#.....####....>#",
+    "################",
+  ],
+  [
+    "################",
+    "#..#.....##.#..#",
+    "#.....##..#.#..#",
+    "#........#.#...#",
+    "##....#...#.#..#",
+    "#.#.##..#..#...#",
+    "##.#.........#.#",
+    "#....#..###..#>#",
+    "################",
+  ],
+  [
+    "################",
+    "##.....####.#..#",
+    "###.....#..##..#",
+    "#...#.....#...##",
+    "#......#..#....#",
+    "#..#.#.#....#.##",
+    "#.#.#......##.##",
+    "###..#...#.#..>#",
+    "################",
+  ],
+  [
+    "################",
+    "#>...#.#.#...#.#",
+    "#....#..#.##..##",
+    "#..##.......#..#",
+    "#....##........#",
+    "#....##..#.....#",
+    "##.#.....#....##",
+    "#..#..##....#..#",
+    "################",
+  ],
+  [
+    "################",
+    "####......##.#.#",
+    "#...#.#.#.##...#",
+    "#..###..#..#...#",
+    "#..#...#.#...###",
+    "##......###...##",
+    "#.#.....##..#..#",
+    "#.#.#..##..#..>#",
+    "################",
+  ],
+  [
+    "################",
+    "#.#....#......##",
+    "#.#............#",
+    "#.###.........##",
+    "#....#....#..#.#",
+    "#.....#..#..#.##",
+    "#.#......##.#.##",
+    "####.###......>#",
+    "################",
+  ],
+  [
+    "################",
+    "#....##....#.#.#",
+    "##..#..#....#.##",
+    "#...........#..#",
+    "#.#.....#.#....#",
+    "##...#...#...###",
+    "#....#####.#...#",
+    "##.......#...#>#",
+    "################",
+  ],
+  [
+    "################",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "#.......>......#",
+    "#..............#",
+    "#..............#",
+    "#..............#",
+    "################",
+  ],
+  [
+    "################",
+    "#..###.#.....#.#",
+    "#..#....#.#.#.##",
+    "#.#..#....#....#",
+    "#.#..###..#.#..#",
+    "#.....#.###....#",
+    "#..........#.###",
+    "#.#..#.....#..>#",
+    "################",
+  ],
+  [
+    "################",
+    "#.#....#.......#",
+    "#.#..#.#.#.....#",
+    "#...........#..#",
+    "#...#..........#",
+    "#.###.###....#.#",
+    "#.#..........#.#",
+    "#...#..#.....#>#",
+    "################",
+  ],
+  [
+    "################",
+    "#..#...........#",
+    "#...........#..#",
+    "#...###..##....#",
+    "#>....#...#....#",
+    "#.##.##..#..#.##",
+    "#..#.....#...#.#",
+    "#...#......#...#",
+    "################",
+  ],
+  [
+    "################",
+    "#...#..........#",
+    "###.......#...##",
+    "#..###..#.#...##",
+    "#.#..#..#...##.#",
+    "#..#....#.##..##",
+    "#..#..>..#..####",
+    "#.#......#.....#",
+    "################",
+  ],
+  [
+    "################",
+    "#...#...#.###.>#",
+    "##.##....###...#",
+    "#.......##.....#",
+    "##.#..........##",
+    "#.#.#....#.#...#",
+    "#.#..#.....#...#",
+    "###....#......##",
+    "################",
+  ],
+  [
+    "################",
+    "#...#.#...#....#",
+    "#...#.......##.#",
+    "###.........#.##",
+    "#.........##...#",
+    "#....#.#....##.#",
+    "###....##..##.##",
+    "#....#.#.#....>#",
+    "################",
+  ],
+  [
+    "################",
+    "#...#...#..#...#",
+    "#..#####...#...#",
+    "##..#......#.#.#",
+    "#>#....#....#..#",
+    "#....#.###.....#",
+    "#.#...#....#..##",
+    "#....#.....#.#.#",
+    "################",
+  ],
+];
+  let maze = levels[levelIndex];
+  let player = { x: 1, y: 1 };
+
+  function drawMaze() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let y = 0; y < maze.length; y++) {
+      for (let x = 0; x < maze[y].length; x++) {
+        const char = maze[y][x];
+        if (char === '#') {
+          ctx.fillStyle = '#111';
+        } else if (char === '>') {
+          ctx.fillStyle = '#33ff33';
+        } else {
+          ctx.fillStyle = '#000';
+        }
+        ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+      }
+    }
+    ctx.fillStyle = '#ff3333';
+    ctx.fillRect(player.x * tileSize + 6, player.y * tileSize + 6, tileSize - 12, tileSize - 12);
+  }
+
+  function move(dx, dy) {
+    const newX = player.x + dx;
+    const newY = player.y + dy;
+    if (maze[newY][newX] !== '#') {
+      player.x = newX;
+      player.y = newY;
+    }
+    if (maze[newY][newX] === '>') {
+      document.getElementById("overlay").style.display = 'block';
+      triggerCreepText();
+      setTimeout(() => {
+        levelIndex++;
+        if (levelIndex >= levels.length) {
+          endMaze();
+          return;
+        }
+        maze = levels[levelIndex];
+        player = { x: 1, y: 1 };
+        document.getElementById("overlay").style.display = 'none';
+        drawMaze();
+      }, 4000);
+    }
+    drawMaze();
+  }
+
+  function endMaze() {
+    document.getElementById("overlay").innerHTML = "██ SYSTEM OVERLOAD ██<br>SUBJECT CONTAINMENT FAILED";
+    document.getElementById("overlay").style.display = 'block';
+    document.getElementById("creepText").innerHTML = "<div>you never left</div><div>they were watching</div><div>recall failed</div><div>welcome back subject B-06</div>";
+    document.getElementById("creepText").style.display = 'block';
+  }
+
+  const creepWords = [
+    "looping", "you were here", "subject active", "incomplete recall", "fragments", "reinitialize", "pending key", "B-06 flagged", "not done yet"
+  ];
+
+  function triggerCreepText() {
+    const creepText = document.getElementById("creepText");
+    creepText.innerHTML = creepWords.map(word => `<div>${word}</div>`).join('');
+    creepText.style.display = 'block';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case 'ArrowUp': case 'w': move(0, -1); break;
+      case 'ArrowDown': case 's': move(0, 1); break;
+      case 'ArrowLeft': case 'a': move(-1, 0); break;
+      case 'ArrowRight': case 'd': move(1, 0); break;
+    }
+  });
+
+  drawMaze();
+</script>
+</body>
+</html>
